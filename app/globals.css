@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 🌍 Base style untuk body & font */
+html, body {
+  @apply h-full w-full bg-white text-gray-900 antialiased;
+  font-family: 'Inter', sans-serif;
+}
+
+/* 🌐 Styling link */
+a {
+  @apply text-blue-600 hover:underline;
+}
+
+/* ✨ Input form */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  @apply w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500;
+}
+
+/* 📦 Checkbox */
+input[type="checkbox"] {
+  @apply h-4 w-4 text-blue-600 border-gray-300 rounded;
+}
+
+/* 🔘 Buttons */
+.btn-primary {
+  @apply w-full py-3 rounded bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold hover:opacity-90 transition;
+}
+
+.btn-outline {
+  @apply w-full py-3 rounded border border-blue-500 text-blue-600 font-semibold hover:bg-blue-50 transition;
+}
+
+.btn-icon {
+  @apply p-2 border rounded hover:bg-gray-100 transition;
+}
+
+/* 📝 Headings di form */
+h1, h2, h3, h4 {
+  @apply font-bold text-gray-900;
+}
