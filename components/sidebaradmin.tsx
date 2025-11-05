@@ -16,7 +16,7 @@ import Link from "next/link";
 
 export default function Sidebar() {
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const pathname = usePathname(); // untuk deteksi halaman aktif
+  const pathname = usePathname(); 
 
   // Helper: menentukan apakah link aktif
   const isActive = (path: string) =>
