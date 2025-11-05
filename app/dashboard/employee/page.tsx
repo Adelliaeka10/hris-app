@@ -1,8 +1,13 @@
 "use client";
 
-import { Clock, Mail, XCircle, SquareCheck, ClipboardClock } from "lucide-react";
-import Sidebar from "@/components/sidebaremployee";
-import Navbar from "@/components/navbar";
+import Card from "@/components/card";
+import {
+  Clock,
+  Mail,
+  XCircle,
+  CheckSquare,
+  ClipboardClock,
+} from "lucide-react";
 import {
   RadarChart,
   PolarGrid,
@@ -35,94 +40,74 @@ const workHoursData = [
 
 export default function EmployeeDashboard() {
   return (
-    <div className="flex h-screen">
-      {/* Sidebar */}
-      <Sidebar />
+    <div className="flex flex-col flex-1 overflow-y-auto bg-gray-100">
+      {/* Cards */}
+      <div className="p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        <Card
+          title="Work Hours"
+          value="120h 20m"
+          color="bg-blue-100"
+          icon={<Clock className="w-6 h-6 text-blue-600" />}
+        />
+        <Card
+          title="On Time"
+          value="15"
+          color="bg-purple-100"
+          icon={<CheckSquare className="w-6 h-6 text-purple-600" />}
+        />
+        <Card
+          title="Late"
+          value="5"
+          color="bg-yellow-100"
+          icon={<ClipboardClock className="w-6 h-6 text-yellow-600" />}
+        />
+        <Card
+          title="Leave/Sick"
+          value="3"
+          color="bg-green-100"
+          icon={<Mail className="w-6 h-6 text-green-600" />}
+        />
+        <Card
+          title="Alpha"
+          value="5"
+          color="bg-red-100"
+          icon={<XCircle className="w-6 h-6 text-red-600" />}
+        />
+      </div>
 
-      {/* Main Content */}
-      <div className="flex flex-col flex-1 bg-gray-100">
-        <Navbar />
+      {/* Charts */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Radar Chart */}
+        <div className="bg-white p-4 rounded-xl shadow">
+          <h3 className="text-lg font-semibold mb-4">Overview</h3>
+          <ResponsiveContainer width="100%" height={300}>
+            <RadarChart cx="50%" cy="50%" outerRadius="80%" data={overviewData}>
+              <PolarGrid />
+              <PolarAngleAxis dataKey="subject" />
+              <PolarRadiusAxis />
+              <Radar
+                name="Performance"
+                dataKey="A"
+                stroke="#2F6FB0"
+                fill="#2F6FB0"
+                fillOpacity={0.6}
+              />
+            </RadarChart>
+          </ResponsiveContainer>
+        </div>
 
-        {/* Dashboard Content */}
-        <div className="p-6 space-y-6">
-          {/* Top Cards */}
-          <div className="grid grid-cols-5 gap-4">
-            <div className="bg-blue-100 p-4 rounded-xl shadow flex items-center justify-between">
-              <div>
-                <p className="text-gray-700 text-sm">Work Hours</p>
-                <h3 className="text-2xl font-bold">120h 20m</h3>
-              </div>
-              <Clock className="w-6 h-6 text-blue-600" />
-            </div>
-
-            <div className="bg-purple-100 p-4 rounded-xl shadow flex items-center justify-between">
-              <div>
-                <p className="text-gray-700 text-sm">On Time</p>
-                <h3 className="text-2xl font-bold">15</h3>
-              </div>
-              <SquareCheck className="w-6 h-6 text-purple-600" />
-            </div>
-
-            <div className="bg-yellow-100 p-4 rounded-xl shadow flex items-center justify-between">
-              <div>
-                <p className="text-gray-700 text-sm">Late</p>
-                <h3 className="text-2xl font-bold">5</h3>
-              </div>
-              <ClipboardClock className="w-6 h-6 text-yellow-600" />
-            </div>
-
-            <div className="bg-green-100 p-4 rounded-xl shadow flex items-center justify-between">
-              <div>
-                <p className="text-gray-700 text-sm">Leave/Sick</p>
-                <h3 className="text-2xl font-bold">3</h3>
-              </div>
-              <Mail className="w-6 h-6 text-green-600" />
-            </div>
-
-            <div className="bg-red-100 p-4 rounded-xl shadow flex items-center justify-between">
-              <div>
-                <p className="text-gray-700 text-sm">Alpha</p>
-                <h3 className="text-2xl font-bold">1</h3>
-              </div>
-              <XCircle className="w-6 h-6 text-red-600" />
-            </div>
-          </div>
-
-          {/* Charts */}
-          <div className="grid grid-cols-2 gap-6">
-            {/* Radar Chart */}
-            <div className="bg-white p-4 rounded-xl shadow">
-              <h3 className="text-lg font-semibold mb-4">Overview</h3>
-              <ResponsiveContainer width="100%" height={300}>
-                <RadarChart cx="50%" cy="50%" outerRadius="80%" data={overviewData}>
-                  <PolarGrid />
-                  <PolarAngleAxis dataKey="subject" />
-                  <PolarRadiusAxis />
-                  <Radar
-                    name="Performance"
-                    dataKey="A"
-                    stroke="#2F6FB0"
-                    fill="#2F6FB0"
-                    fillOpacity={0.6}
-                  />
-                </RadarChart>
-              </ResponsiveContainer>
-            </div>
-
-            {/* Bar Chart */}
-            <div className="bg-white p-4 rounded-xl shadow">
-              <h3 className="text-lg font-semibold mb-4">Work Hours</h3>
-              <ResponsiveContainer width="100%" height={300}>
-                <BarChart data={workHoursData}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="day" />
-                  <YAxis />
-                  <Tooltip />
-                  <Bar dataKey="hours" fill="#2F6FB0" />
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
-          </div>
+        {/* Bar Chart */}
+        <div className="bg-white p-4 rounded-xl shadow">
+          <h3 className="text-lg font-semibold mb-4">Work Hours</h3>
+          <ResponsiveContainer width="100%" height={300}>
+            <BarChart data={workHoursData}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="day" />
+              <YAxis />
+              <Tooltip />
+              <Bar dataKey="hours" fill="#2F6FB0" />
+            </BarChart>
+          </ResponsiveContainer>
         </div>
       </div>
     </div>
