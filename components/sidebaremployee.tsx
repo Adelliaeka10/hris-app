@@ -2,14 +2,12 @@
 
 import { useState } from "react";
 import {
-  Users,
   Clock,
   LayoutDashboard,
-  CalendarDays,
-  HandCoins,
   LogOut,
   PanelLeft,
   UserCog,
+  CalendarDays
 } from "lucide-react";
 import Link from "next/link";
 
@@ -71,6 +69,14 @@ export default function Sidebar() {
           >
             <UserCog className="w-5 h-5" />
             {!isCollapsed && <span className="ml-2">Shift</span>}
+          </Link>
+
+          <Link
+            href="#"
+            className="flex items-center p-2 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600"
+          >
+            <CalendarDays className="w-5 h-5" />
+            {!isCollapsed && <span className="ml-2">Work Schedule</span>}
           </Link>
         </nav>
       </div>
