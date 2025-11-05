@@ -68,7 +68,7 @@ export default function EmployeeProfilePage() {
                   </div>
                 ))}
 
-                {/* Upload Profile Photo (no preview) */}
+                {/* Upload Profile Photo */}
                 <div>
                   <label className="text-sm font-semibold block mb-1">
                     Profile Photo
