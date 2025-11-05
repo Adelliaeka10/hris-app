@@ -2,6 +2,7 @@
 
 import { useState, ChangeEvent, FormEvent } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function ResetPasswordPage() {
   const [formData, setFormData] = useState({
@@ -33,13 +34,13 @@ export default function ResetPasswordPage() {
         <div className="w-full max-w-md space-y-6">
           {/* Title */}
           <div className="flex flex-col items-center justify-center text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
-            Set a new password
-          </h2>
-          <p className="text-gray-600 text-sm">
-            Enter your new password below to complete the reset process.
-            Ensure it’s strong and secure.
-          </p>
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+              Set a new password
+            </h2>
+            <p className="text-gray-600 text-sm">
+              Enter your new password below to complete the reset process.
+              Ensure it’s strong and secure.
+            </p>
           </div>
 
           {/* Form */}
@@ -98,8 +99,19 @@ export default function ResetPasswordPage() {
         </div>
       </div>
 
-      {/* Right side (blue background) */}
-      <div className="hidden md:flex w-1/2 bg-gradient-to-b from-blue-500 to-blue-900" />
+      {/* Right side (gradient background + image) */}
+      <div className="hidden md:flex w-1/2 bg-gradient-to-b from-blue-500 to-blue-900 items-center justify-center relative">
+        <div className="absolute inset-0 flex items-center justify-center">
+          <Image
+            src="/logo1.png"
+            alt="HRIS Illustration"
+            width={600}
+            height={600}
+            className="object-contain max-h-[80%]"
+            priority
+          />
+        </div>
+      </div>
     </div>
   );
 }

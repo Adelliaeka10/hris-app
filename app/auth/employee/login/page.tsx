@@ -24,13 +24,22 @@ export default function UserLoginPage() {
 
   return (
     <div className="min-h-screen flex">
-      {/* Left side (blue gradient) */}
-      <div className="hidden md:flex w-1/2 bg-gradient-to-b from-blue-500 to-blue-900 items-center justify-center">
-        {/* <h1 className="text-white text-3xl font-bold">HRIS</h1> */}
+      {/* Left side (blue gradient + image) */}
+      <div className="hidden md:flex w-1/2 bg-gradient-to-b from-blue-500 to-blue-900 items-center justify-center relative">
+        <div className="absolute inset-0 flex items-center justify-center">
+          <Image
+            src="/logo1.png"
+            alt="HRIS Illustration"
+            width={600}
+            height={600}
+            className="object-contain max-h-[80%]"
+            priority
+          />
+        </div>
       </div>
 
       {/* Right side (form) */}
-      <div className="flex flex-col w-full md:w-1/2 p-8 md:p-16">
+      <div className="flex flex-col w-full md:w-1/2 p-8 md:p-16 bg-white">
         {/* Logo */}
         <div className="mb-6 flex items-center space-x-2">
           <Image src="/logo.png" alt="HRIS Logo" width={80} height={80} />
@@ -38,12 +47,12 @@ export default function UserLoginPage() {
 
         {/* Title */}
         <div className="flex flex-col items-center justify-center text-center">
-        <h2 className="text-3xl font-bold text-red-700 mb-2">
-          Sign In with Employee ID
-        </h2>
-        <p className="text-gray-600 mb-6">
-          Welcome back to HRIS cmlabs! Manage everything with ease.
-        </p>
+          <h2 className="text-3xl font-bold text-red-700 mb-2">
+            Sign In with Employee ID
+          </h2>
+          <p className="text-gray-600 mb-6">
+            Welcome back to HRIS cmlabs! Manage everything with ease.
+          </p>
         </div>
 
         {/* Form */}
@@ -99,27 +108,6 @@ export default function UserLoginPage() {
               Forgot Password?
             </Link>
           </div>
-
-          {/* Social Login */}
-          {/* <div className="flex items-center my-4">
-            <hr className="flex-grow border-gray-300" />
-            <span className="mx-2 text-gray-400">or</span>
-            <hr className="flex-grow border-gray-300" />
-          </div>
-          <div className="flex justify-center space-x-4">
-            <button
-              type="button"
-              className="p-2 border rounded hover:bg-gray-100"
-            >
-              <Image src="/google.svg" alt="Google" width={24} height={24} />
-            </button>
-            <button
-              type="button"
-              className="p-2 border rounded hover:bg-gray-100"
-            >
-              <Image src="/apple.svg" alt="Apple" width={24} height={24} />
-            </button>
-          </div> */}
 
           {/* Submit */}
           <button

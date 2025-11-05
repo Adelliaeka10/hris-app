@@ -31,12 +31,21 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen flex">
-      {/* Left side (blue gradient) */}
-      <div className="hidden md:flex w-1/2 bg-gradient-to-b from-blue-500 to-blue-900 items-center justify-center">
-        {/* <h1 className="text-white text-3xl font-bold">HRIS</h1> */}
+      {/* Left Side with Image */}
+      <div className="hidden md:flex w-1/2 bg-gradient-to-b from-blue-500 to-blue-900 items-center justify-center relative">
+        <div className="absolute inset-0 flex items-center justify-center">
+          <Image
+            src="/logo1.png"
+            alt="HRIS Illustration"
+            width={600}
+            height={1000}
+            className="object-contain max-h-[80%]"
+            priority
+          />
+        </div>
       </div>
 
-      {/* Right side (form) */}
+      {/* Right Side (Login Form) */}
       <div className="flex flex-col w-full md:w-1/2 p-8 md:p-16 bg-white relative">
         {/* Logo */}
         <div className="mb-6 flex items-center space-x-2">
@@ -108,7 +117,7 @@ export default function LoginPage() {
           {/* Submit */}
           <button
             type="submit"
-            className="w-full py-3 rounded bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold"
+            className="w-full py-3 rounded bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold hover:opacity-90 transition"
           >
             Sign In
           </button>

@@ -26,9 +26,18 @@ export default function SignUpPage() {
 
   return (
     <div className="min-h-screen flex">
-      {/* Left side (blue gradient) */}
-      <div className="hidden md:flex w-1/2 bg-gradient-to-b from-blue-500 to-blue-900 items-center justify-center">
-        {/* <h1 className="text-white text-3xl font-bold">HRIS</h1> */}
+      {/* Left side (blue gradient + image) */}
+      <div className="hidden md:flex w-1/2 bg-gradient-to-b from-blue-500 to-blue-900 items-center justify-center relative">
+        <div className="absolute inset-0 flex items-center justify-center">
+          <Image
+            src="/logo1.png"
+            alt="HRIS Illustration"
+            width={600}
+            height={600}
+            className="object-contain max-h-[80%]"
+            priority
+          />
+        </div>
       </div>
 
       {/* Right side (form) */}
@@ -40,23 +49,23 @@ export default function SignUpPage() {
 
         {/* Title */}
         <div className="flex flex-col items-center justify-center text-center">
-        <h2 className="text-3xl font-bold text-red-700 mb-2">Sign Up</h2>
-        <p className="text-gray-600 mb-6">
-          Create an account for a better experience
-        </p>
+          <h2 className="text-3xl font-bold text-red-700 mb-2">Sign Up</h2>
+          <p className="text-gray-600 mb-6">
+            Create an account for a better experience
+          </p>
         </div>
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
-          {/* First & Last Name */}
+          {/* Full Name */}
           <div>
-           <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-gray-700 mb-1">
               Full Name
             </label>
             <input
               type="text"
               name="firstName"
-              placeholder="Enter Your First Name"
+              placeholder="Enter Your Full Name"
               value={formData.firstName}
               onChange={handleChange}
               className="w-full p-3 border rounded"
@@ -66,50 +75,50 @@ export default function SignUpPage() {
 
           {/* Email */}
           <div>
-           <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-gray-700 mb-1">
               Email
             </label>
-          <input
-            type="email"
-            name="email"
-            placeholder="Enter Your Email"
-            value={formData.email}
-            onChange={handleChange}
-            className="w-full p-3 border rounded"
-            required
-          />
+            <input
+              type="email"
+              name="email"
+              placeholder="Enter Your Email"
+              value={formData.email}
+              onChange={handleChange}
+              className="w-full p-3 border rounded"
+              required
+            />
           </div>
 
           {/* Password */}
           <div>
-           <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-gray-700 mb-1">
               Password
             </label>
-          <input
-            type="password"
-            name="password"
-            placeholder="Enter Your Password"
-            value={formData.password}
-            onChange={handleChange}
-            className="w-full p-3 border rounded"
-            required
-          />
+            <input
+              type="password"
+              name="password"
+              placeholder="Enter Your Password"
+              value={formData.password}
+              onChange={handleChange}
+              className="w-full p-3 border rounded"
+              required
+            />
           </div>
 
           {/* Confirm Password */}
           <div>
-           <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-gray-700 mb-1">
               Confirm Password
             </label>
-          <input
-            type="password"
-            name="confirmPassword"
-            placeholder="Confirm Your Password"
-            value={formData.confirmPassword}
-            onChange={handleChange}
-            className="w-full p-3 border rounded"
-            required
-          />
+            <input
+              type="password"
+              name="confirmPassword"
+              placeholder="Confirm Your Password"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              className="w-full p-3 border rounded"
+              required
+            />
           </div>
 
           {/* Agree checkbox */}
@@ -124,25 +133,10 @@ export default function SignUpPage() {
             <span>I agree with the terms of use of HRIS</span>
           </label>
 
-          {/* Social login */}
-          {/* <div className="flex items-center my-4">
-            <hr className="flex-grow border-gray-300" />
-            <span className="mx-2 text-gray-400">or</span>
-            <hr className="flex-grow border-gray-300" />
-          </div>
-          <div className="flex justify-center space-x-4">
-            <button type="button" className="p-2 border rounded hover:bg-gray-100">
-              <Image src="/google.svg" alt="Google" width={24} height={24} />
-            </button>
-            <button type="button" className="p-2 border rounded hover:bg-gray-100">
-              <Image src="/apple.svg" alt="Apple" width={24} height={24} />
-            </button>
-          </div> */}
-
           {/* Submit */}
           <button
             type="submit"
-            className="w-full py-3 rounded bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold"
+            className="w-full py-3 rounded bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold hover:opacity-90 transition"
           >
             Sign Up
           </button>
