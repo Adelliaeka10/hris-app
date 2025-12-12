@@ -1,6 +1,9 @@
 {
-  "/page": "app/page.js",
-  "/dashboard/admin/employee/page": "app/dashboard/admin/employee/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
   "/dashboard/employee/page": "app/dashboard/employee/page.js",
-  "/dashboard/admin/page": "app/dashboard/admin/page.js"
+  "/dashboard/admin/attendance/page": "app/dashboard/admin/attendance/page.js",
+  "/dashboard/admin/leaves/page": "app/dashboard/admin/leaves/page.js",
+  "/dashboard/employee/leaves/page": "app/dashboard/employee/leaves/page.js",
+  "/dashboard/employee/workschedule/page": "app/dashboard/employee/workschedule/page.js",
+  "/dashboard/employee/shift/page": "app/dashboard/employee/shift/page.js"
 }
