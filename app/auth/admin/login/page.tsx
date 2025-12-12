@@ -23,7 +23,6 @@ export default function LoginPage() {
     e.preventDefault();
     console.log("Login data:", formData);
 
-    // 👉 simulasi login sukses
     if (formData.email && formData.password) {
       router.push("/dashboard/admin");
     }
@@ -32,20 +31,19 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen flex">
       {/* Left Side with Image */}
-      <div className="hidden md:flex w-1/2 bg-gradient-to-b from-blue-500 to-blue-900 items-center justify-center relative">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <Image
-            src="/logo1.png"
-            alt="HRIS Illustration"
-            width={600}
-            height={1000}
-            className="object-contain max-h-[80%]"
-            priority
-          />
-        </div>
+      <div className="hidden md:flex w-1/2 items-center justify-center relative"
+        style={{ background: "var(--gradient-blue)" }}>
+        <Image
+          src="/logo1.png"
+          alt="HRIS Illustration"
+          width={600}
+          height={1000}
+          className="object-contain max-h-[80%]"
+          priority
+        />
       </div>
 
-      {/* Right Side (Login Form) */}
+      {/* Right Side */}
       <div className="flex flex-col w-full md:w-1/2 p-8 md:p-16 bg-white relative">
         {/* Logo */}
         <div className="mb-6 flex items-center space-x-2">
@@ -54,8 +52,8 @@ export default function LoginPage() {
 
         {/* Title */}
         <div className="flex flex-col items-center justify-center text-center">
-          <h2 className="text-3xl font-bold text-red-700 mb-2">Sign In</h2>
-          <p className="text-gray-600 mb-6">
+          <h2 className="text-3xl font-bold text-secondary mb-2" style={{ color: "var(--color-accent)" }}>Sign In</h2>
+          <p className="mb-6" style={{ color: "var(--color-black)" }}>
             Welcome back to HRIS cmlabs! Manage everything with ease.
           </p>
         </div>
@@ -64,7 +62,7 @@ export default function LoginPage() {
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Email */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-semibold mb-1" style={{ color: "var(--color-black)" }}>
               Email
             </label>
             <input
@@ -73,14 +71,14 @@ export default function LoginPage() {
               placeholder="Enter Your Email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full p-3 border rounded"
+              className="input"
               required
             />
           </div>
 
           {/* Password */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-semibold mb-1" style={{ color: "var(--color-black)" }}>
               Password
             </label>
             <input
@@ -89,7 +87,7 @@ export default function LoginPage() {
               placeholder="Enter Your Password"
               value={formData.password}
               onChange={handleChange}
-              className="w-full p-3 border rounded"
+              className="input"
               required
             />
           </div>
@@ -104,32 +102,28 @@ export default function LoginPage() {
                 onChange={handleChange}
                 className="h-4 w-4"
               />
-              <span>Remember Me</span>
+              <span style={{ color: "var(--text-muted)" }}>Remember Me</span>
             </label>
             <Link
               href="/auth/admin/forgot-password"
-              className="text-red-600 hover:underline"
+              className="hover:underline"
+              style={{ color: "var(--color-secondary)" }}
             >
               Forgot Password?
             </Link>
           </div>
 
           {/* Submit */}
-          <button
-            type="submit"
-            className="w-full py-3 rounded bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold hover:opacity-90 transition"
-          >
+          <button type="submit" className="btn-primary">
             Sign In
           </button>
         </form>
 
-        {/* Sign Up link */}
+        {/* Sign Up */}
         <p className="mt-4 text-center text-sm">
           Don’t have an account?{" "}
-          <Link
-            href="/auth/admin/signup"
-            className="text-blue-600 hover:underline"
-          >
+          <Link href="/auth/admin/signup" className="hover:underline"
+            style={{ color: "var(--color-secondary)" }}>
             Sign Up here
           </Link>
         </p>

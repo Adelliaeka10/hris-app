@@ -4,19 +4,33 @@ import { useState, ChangeEvent, FormEvent } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-export default function ForgotPasswordPage() {
-  const [email, setEmail] = useState("");
+export default function ResetPasswordPage() {
+  const [formData, setFormData] = useState({
+    newPassword: "",
+    confirmPassword: "",
+  });
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Reset password link sent to:", email);
-    alert(`If ${email} exists, a reset link will be sent.`);
+
+    if (formData.newPassword !== formData.confirmPassword) {
+      alert("Passwords do not match!");
+      return;
+    }
+
+    console.log("Password reset:", formData.newPassword);
+    alert("Password has been reset successfully (dummy).");
   };
 
   return (
     <div className="min-h-screen flex">
 
-      {/* Left Section */}
+      {/* Left side (form) */}
       <div className="flex flex-col justify-center items-center w-full md:w-1/2 p-8 md:p-16">
         <div className="w-full max-w-md space-y-6">
 
@@ -26,38 +40,59 @@ export default function ForgotPasswordPage() {
               className="text-2xl md:text-3xl font-bold mb-2"
               style={{ color: "var(--color-accent)" }}
             >
-              Forgot your password?
+              Set a new password
             </h2>
 
             <p className="text-sm" style={{ color: "var(--color-black)" }}>
-              No worries! Enter your email address below, and we’ll send you a link
-              to reset your password.
+              Enter your new password below to complete the reset process.
+              Ensure it’s strong and secure.
             </p>
           </div>
 
           {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-4">
+
+            {/* New Password */}
             <div>
               <label
                 className="block text-sm font-semibold mb-1"
                 style={{ color: "var(--color-black)" }}
               >
-                Email
+                New Password
               </label>
 
               <input
-                type="email"
-                placeholder="Enter Your Email"
-                value={email}
-                onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                  setEmail(e.target.value)
-                }
+                type="password"
+                name="newPassword"
+                placeholder="Enter Your New Password"
+                value={formData.newPassword}
+                onChange={handleChange}
                 className="input"
                 required
               />
             </div>
 
-            {/* Reset Button */}
+            {/* Confirm Password */}
+            <div>
+              <label
+                className="block text-sm font-semibold mb-1"
+                style={{ color: "var(--color-black)" }}
+              >
+                Confirm Password
+              </label>
+
+              <input
+                type="password"
+                name="confirmPassword"
+                placeholder="Confirm Your New Password"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                className="input"
+                required
+              />
+            </div>
+
+            {/* Submit */}
             <button type="submit" className="btn-primary">
               Reset Password
             </button>
@@ -66,7 +101,7 @@ export default function ForgotPasswordPage() {
           {/* Back to login */}
           <div className="text-center">
             <Link
-              href="/auth/admin/login"
+              href="/auth/employee/login"
               className="inline-flex items-center space-x-2 font-semibold hover:underline"
               style={{ color: "var(--color-primary)" }}
             >
@@ -77,7 +112,7 @@ export default function ForgotPasswordPage() {
         </div>
       </div>
 
-      {/* Right Side (Gradient + Illustration) */}
+      {/* Right side (gradient + image) */}
       <div
         className="hidden md:flex w-1/2 items-center justify-center relative"
         style={{ background: "var(--gradient-blue)" }}
@@ -93,7 +128,6 @@ export default function ForgotPasswordPage() {
           />
         </div>
       </div>
-
     </div>
   );
 }

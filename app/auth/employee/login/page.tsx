@@ -24,8 +24,11 @@ export default function UserLoginPage() {
 
   return (
     <div className="min-h-screen flex">
-      {/* Left side (blue gradient + image) */}
-      <div className="hidden md:flex w-1/2 bg-gradient-to-b from-blue-500 to-blue-900 items-center justify-center relative">
+      {/* Left side (gradient + image) */}
+      <div
+        className="hidden md:flex w-1/2 items-center justify-center relative"
+        style={{ background: "var(--gradient-blue)" }}
+      >
         <div className="absolute inset-0 flex items-center justify-center">
           <Image
             src="/logo1.png"
@@ -38,7 +41,7 @@ export default function UserLoginPage() {
         </div>
       </div>
 
-      {/* Right side (form) */}
+      {/* Right side (form section) */}
       <div className="flex flex-col w-full md:w-1/2 p-8 md:p-16 bg-white">
         {/* Logo */}
         <div className="mb-6 flex items-center space-x-2">
@@ -47,10 +50,10 @@ export default function UserLoginPage() {
 
         {/* Title */}
         <div className="flex flex-col items-center justify-center text-center">
-          <h2 className="text-3xl font-bold text-red-700 mb-2">
+          <h2 className="text-3xl font-bold text-[var(--color-accent)] mb-2">
             Sign In with Employee ID
           </h2>
-          <p className="text-gray-600 mb-6">
+          <p className="text-[var(--color-black)] mb-6">
             Welcome back to HRIS cmlabs! Manage everything with ease.
           </p>
         </div>
@@ -59,7 +62,7 @@ export default function UserLoginPage() {
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Employee ID */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-semibold text-[var(--color-black)] mb-1">
               Employee ID
             </label>
             <input
@@ -68,14 +71,14 @@ export default function UserLoginPage() {
               placeholder="Enter Your Employee ID"
               value={formData.employeeId}
               onChange={handleChange}
-              className="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="input"
               required
             />
           </div>
 
           {/* Password */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-semibold text-[var(--color-black)] mb-1">
               Password
             </label>
             <input
@@ -84,14 +87,14 @@ export default function UserLoginPage() {
               placeholder="Enter Your Password"
               value={formData.password}
               onChange={handleChange}
-              className="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="input"
               required
             />
           </div>
 
           {/* Remember Me + Forgot Password */}
-          <div className="flex items-center justify-between text-sm">
-            <label className="flex items-center space-x-2">
+          <div className="flex items-center justify-between text-sm text-[var(--text-muted)]">
+            <label className="flex items-center space-x-2 cursor-pointer">
               <input
                 type="checkbox"
                 name="remember"
@@ -101,19 +104,17 @@ export default function UserLoginPage() {
               />
               <span>Remember Me</span>
             </label>
+
             <Link
               href="/auth/user/forgot-password"
-              className="text-red-600 hover:underline"
+              className="hover:underline text-[var(--color-secondary)]"
             >
               Forgot Password?
             </Link>
           </div>
 
-          {/* Submit */}
-          <button
-            type="submit"
-            className="w-full py-3 rounded bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold hover:opacity-90 transition"
-          >
+          {/* Submit button */}
+          <button type="submit" className="btn-primary">
             Sign In
           </button>
         </form>

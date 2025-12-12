@@ -15,15 +15,21 @@ export default function ForgotPasswordPage() {
 
   return (
     <div className="min-h-screen flex">
-      {/* Left side (form) */}
+
+      {/* Left Section */}
       <div className="flex flex-col justify-center items-center w-full md:w-1/2 p-8 md:p-16">
         <div className="w-full max-w-md space-y-6">
+
           {/* Title */}
-          <div className="flex flex-col items-center justify-center text-center">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
-              Forgot your Password?
+          <div className="flex flex-col items-center text-center">
+            <h2
+              className="text-2xl md:text-3xl font-bold mb-2"
+              style={{ color: "var(--color-accent)" }}
+            >
+              Forgot your password?
             </h2>
-            <p className="text-gray-600 text-sm">
+
+            <p className="text-sm" style={{ color: "var(--color-black)" }}>
               No worries! Enter your email address below, and we’ll send you a link
               to reset your password.
             </p>
@@ -32,9 +38,13 @@ export default function ForgotPasswordPage() {
           {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                className="block text-sm font-semibold mb-1"
+                style={{ color: "var(--color-black)" }}
+              >
                 Email
               </label>
+
               <input
                 type="email"
                 placeholder="Enter Your Email"
@@ -42,16 +52,13 @@ export default function ForgotPasswordPage() {
                 onChange={(e: ChangeEvent<HTMLInputElement>) =>
                   setEmail(e.target.value)
                 }
-                className="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="input"
                 required
               />
             </div>
 
-            {/* Reset Password Button */}
-            <button
-              type="submit"
-              className="w-full py-3 rounded bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold hover:opacity-90 transition"
-            >
+            {/* Reset Button */}
+            <button type="submit" className="btn-primary">
               Reset Password
             </button>
           </form>
@@ -59,8 +66,9 @@ export default function ForgotPasswordPage() {
           {/* Back to login */}
           <div className="text-center">
             <Link
-              href="/auth/admin/login"
-              className="inline-flex items-center space-x-2 text-red-600 font-medium hover:underline"
+              href="/auth/employee/login"
+              className="inline-flex items-center space-x-2 font-semibold hover:underline"
+              style={{ color: "var(--color-primary)" }}
             >
               <span>⬅️</span>
               <span>Back to Login</span>
@@ -69,19 +77,23 @@ export default function ForgotPasswordPage() {
         </div>
       </div>
 
-      {/* Right side (blue gradient with image) */}
-      <div className="hidden md:flex w-1/2 bg-gradient-to-b from-blue-500 to-blue-900 items-center justify-center relative">
+      {/* Right Side (Gradient + Illustration) */}
+      <div
+        className="hidden md:flex w-1/2 items-center justify-center relative"
+        style={{ background: "var(--gradient-blue)" }}
+      >
         <div className="absolute inset-0 flex items-center justify-center">
           <Image
             src="/logo1.png"
             alt="HRIS Illustration"
             width={600}
             height={600}
-            className="object-contain max-h-[80%]"
+            className="object-contain max-h-[80%] opacity-90"
             priority
           />
         </div>
       </div>
+
     </div>
   );
 }

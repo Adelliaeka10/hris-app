@@ -26,8 +26,11 @@ export default function SignUpPage() {
 
   return (
     <div className="min-h-screen flex">
-      {/* Left side (blue gradient + image) */}
-      <div className="hidden md:flex w-1/2 bg-gradient-to-b from-blue-500 to-blue-900 items-center justify-center relative">
+      {/* Left side (gradient background + image) */}
+      <div
+        className="hidden md:flex w-1/2 items-center justify-center relative"
+        style={{ background: "var(--gradient-blue)" }}
+      >
         <div className="absolute inset-0 flex items-center justify-center">
           <Image
             src="/logo1.png"
@@ -49,8 +52,10 @@ export default function SignUpPage() {
 
         {/* Title */}
         <div className="flex flex-col items-center justify-center text-center">
-          <h2 className="text-3xl font-bold text-red-700 mb-2">Sign Up</h2>
-          <p className="text-gray-600 mb-6">
+          <h2 className="text-3xl font-bold text-[var(--color-accent)] mb-2">
+            Sign Up
+          </h2>
+          <p className="text-[var(--color-black)] mb-6">
             Create an account for a better experience
           </p>
         </div>
@@ -59,7 +64,7 @@ export default function SignUpPage() {
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Full Name */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-semibold text-[var(--color-black)] mb-1">
               Full Name
             </label>
             <input
@@ -68,14 +73,14 @@ export default function SignUpPage() {
               placeholder="Enter Your Full Name"
               value={formData.firstName}
               onChange={handleChange}
-              className="w-full p-3 border rounded"
+              className="input"
               required
             />
           </div>
 
           {/* Email */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-semibold text-[var(--color-black)] mb-1">
               Email
             </label>
             <input
@@ -84,14 +89,14 @@ export default function SignUpPage() {
               placeholder="Enter Your Email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full p-3 border rounded"
+              className="input"
               required
             />
           </div>
 
           {/* Password */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-semibold text-[var(--color-black)] mb-1">
               Password
             </label>
             <input
@@ -100,14 +105,14 @@ export default function SignUpPage() {
               placeholder="Enter Your Password"
               value={formData.password}
               onChange={handleChange}
-              className="w-full p-3 border rounded"
+              className="input"
               required
             />
           </div>
 
           {/* Confirm Password */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-semibold text-[var(--color-black)] mb-1">
               Confirm Password
             </label>
             <input
@@ -116,13 +121,13 @@ export default function SignUpPage() {
               placeholder="Confirm Your Password"
               value={formData.confirmPassword}
               onChange={handleChange}
-              className="w-full p-3 border rounded"
+              className="input"
               required
             />
           </div>
 
           {/* Agree checkbox */}
-          <label className="flex items-center space-x-2 text-sm">
+          <label className="flex items-center space-x-2 text-sm text-[var(--text-muted)]">
             <input
               type="checkbox"
               name="agree"
@@ -134,18 +139,18 @@ export default function SignUpPage() {
           </label>
 
           {/* Submit */}
-          <button
-            type="submit"
-            className="w-full py-3 rounded bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold hover:opacity-90 transition"
-          >
+          <button type="submit" className="btn-primary">
             Sign Up
           </button>
         </form>
 
         {/* Login link */}
-        <p className="mt-4 text-center text-sm">
+        <p className="mt-4 text-center text-sm text-[var(--color-black)]">
           Already have an account?{" "}
-          <Link href="/auth/admin/login" className="text-blue-600 hover:underline">
+          <Link
+            href="/auth/admin/login"
+            className="hover:underline text-[var(--color-secondary)]"
+          >
             Login here
           </Link>
         </p>
