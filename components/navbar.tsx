@@ -30,7 +30,7 @@ export default function Navbar({ role }: NavbarProps) {
         setPageTitle("Attendance");
       } else if (pathname.includes("/dashboard/admin/leaves")) {
         setPageTitle("Leaves");
-      } else if (pathname.includes("/dashboard/admin/work-schedule")) {
+      } else if (pathname.includes("/dashboard/admin/workschedule")) {
         setPageTitle("Work Schedule");
       } else if (pathname.includes("/dashboard/admin/transactions")) {
         setPageTitle("Transactions");
@@ -53,7 +53,7 @@ export default function Navbar({ role }: NavbarProps) {
         setPageTitle("Attendance");
       } else if (pathname.includes("/dashboard/employee/leaves")) {
         setPageTitle("Leaves");
-      } else if (pathname.includes("/dashboard/employee/work-schedule")) {
+      } else if (pathname.includes("/dashboard/employee/workschedule")) {
         setPageTitle("Work Schedule");
       } else if (pathname.includes("/dashboard/employee/transactions")) {
         setPageTitle("Transactions");
@@ -76,11 +76,11 @@ export default function Navbar({ role }: NavbarProps) {
     if (role === "admin") {
       if (page === "profile") targetPath = "/profile/admin";
       else if (page === "company") targetPath = "/company/admin";
-      else targetPath = `/dashboard/admin/${page}`;
+      else targetPath = '/dashboard/admin/${page}';
     } else if (role === "employee") {
       if (page === "profile") targetPath = "/profile/employee";
       else if (page === "company") targetPath = "/company/employee";
-      else targetPath = `/dashboard/employee/${page}`;
+      else targetPath = '/dashboard/employee/${page}';
     }
 
     router.push(targetPath);
@@ -99,7 +99,7 @@ export default function Navbar({ role }: NavbarProps) {
   return (
     <div className="flex items-center justify-between px-6 py-2 bg-white shadow border-b sticky top-0 z-50">
       {/* Kiri: Judul Halaman */}
-      <h2 className="text-xl font-bold text-red-600">{pageTitle}</h2>
+      <h2 className="text-xl font-bold" style={{ color: "var(--color-accent)" }}>{pageTitle}</h2>
 
       {/* Tengah: Pencarian */}
       <div className="flex-1 flex justify-center">
@@ -138,7 +138,7 @@ export default function Navbar({ role }: NavbarProps) {
                 <li>
                   <button
                     onClick={() => handleNavigation("profile")}
-                    className="w-full text-center px-4 py-2 bg-gray-100 text-gray-800 hover:bg-gray-200"
+                    className="w-full text-center px-4 py-2 bg-gray-100 text-blue-900 hover:bg-gray-200"
                   >
                     My Profile
                   </button>
@@ -146,7 +146,7 @@ export default function Navbar({ role }: NavbarProps) {
                 <li>
                   <button
                     onClick={() => handleNavigation("company")}
-                    className="w-full text-center px-4 py-2 bg-gray-100 text-gray-800 hover:bg-gray-200"
+                    className="w-full text-center px-4 py-2 bg-gray-100 text-blue-900 hover:bg-gray-200"
                   >
                     My Company
                   </button>
@@ -154,7 +154,7 @@ export default function Navbar({ role }: NavbarProps) {
                 <li>
                   <button
                     onClick={handleLogout}
-                    className="w-full text-center px-4 py-2 bg-red-500 text-white font-semibold hover:bg-red-600"
+                    className="w-full text-center px-4 py-2 bg-red-700 text-white font-semibold hover:bg-red-600"
                   >
                     Logout
                   </button>
