@@ -5,46 +5,47 @@ import { Users, CheckSquare, Mail, XCircle, ClipboardClock } from "lucide-react"
 
 export default function DashboardPage() {
   return (
-    <div className="flex flex-col flex-1 overflow-y-auto bg-gray-100">
+    <div className="dashboard-container">
+      
       {/* Cards */}
-      <div className="p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+      <div className="dashboard-grid">
         <Card
-          title="Total Employess"
+          title="Total Employees"
           value="500"
           color="bg-blue-100"
-          icon={<Users className="w-6 h-6 text-blue-600" />}
+          icon={<Users className="w-6 h-6" style={{ color: "var(--color-primary)" }}/>}
         />
         <Card
           title="On Time"
           value="330"
           color="bg-purple-100"
-          icon={<CheckSquare className="w-6 h-6 text-purple-600" />}
+          icon={<CheckSquare className="w-6 h-6 text-purple-400" />}
         />
         <Card
           title="Late"
           value="70"
           color="bg-yellow-100"
-          icon={<ClipboardClock className="w-6 h-6 text-yellow-600" />}
+          icon={<ClipboardClock className="w-6 h-6 text-yellow-500" />}
         />
         <Card
           title="Leave/Sick"
           value="95"
           color="bg-green-100"
-          icon={<Mail className="w-6 h-6 text-green-600" />}
+          icon={<Mail className="w-6 h-6 text-green-700" />}
         />
         <Card
           title="Alpha"
           value="5"
           color="bg-red-100"
-          icon={<XCircle className="w-6 h-6 text-red-600" />}
+          icon={<XCircle className="w-6 h-6 text-red-700" />}
         />
       </div>
 
       {/* Data Tables */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 px-6 pb-6">
-        <div className="bg-white p-4 rounded-xl shadow">
-          <h4 className="font-bold mb-2">Employee Data Entry</h4>
-          <ol className="text-sm space-y-1 text-gray-700">
+        <div className="table-box">
+          <h4>Employee Data Entry</h4>
+          <ol>
             <li>1. Leslie Alexander</li>
             <li>2. Annette Black</li>
             <li>3. Esther Howard</li>
@@ -53,9 +54,9 @@ export default function DashboardPage() {
           </ol>
         </div>
 
-        <div className="bg-white p-4 rounded-xl shadow">
-          <h4 className="font-bold mb-2">Employee Data Leave/Sick</h4>
-          <ol className="text-sm space-y-1 text-gray-700">
+        <div className="table-box">
+          <h4>Employee Data Leave/Sick</h4>
+          <ol>
             <li>1. Leslie Alexander</li>
             <li>2. Annette Black</li>
             <li>3. Esther Howard</li>
@@ -63,9 +64,9 @@ export default function DashboardPage() {
           </ol>
         </div>
 
-        <div className="bg-white p-4 rounded-xl shadow">
-          <h4 className="font-bold mb-2">Employee Data Alpha</h4>
-          <ol className="text-sm space-y-1 text-gray-700">
+        <div className="table-box">
+          <h4>Employee Data Alpha</h4>
+          <ol>
             <li>1. Leslie Alexander</li>
             <li>2. Annette Black</li>
             <li>3. Esther Howard</li>
@@ -73,9 +74,9 @@ export default function DashboardPage() {
           </ol>
         </div>
 
-        <div className="bg-white p-4 rounded-xl shadow">
-          <h4 className="font-bold mb-2">Employee Data Late</h4>
-          <ol className="text-sm space-y-1 text-gray-700">
+        <div className="table-box">
+          <h4>Employee Data Late</h4>
+          <ol>
             <li>1. Leslie Alexander</li>
             <li>2. Annette Black</li>
             <li>3. Esther Howard</li>
@@ -86,7 +87,7 @@ export default function DashboardPage() {
 
       {/* Chart Placeholder */}
       <div className="px-6 pb-6">
-        <div className="bg-white h-56 rounded-xl shadow flex items-center justify-center text-gray-400 text-sm">
+        <div className="chart-box">
           [ Chart Statistik Akan Ditempatkan di Sini ]
         </div>
       </div>

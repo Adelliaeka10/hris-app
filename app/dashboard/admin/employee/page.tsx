@@ -33,14 +33,17 @@ export default function EmployeePage() {
 
   return (
     <div className="p-6 overflow-y-auto">
+      
       {/* Card Container */}
-      <div className="bg-white border border-gray-300 rounded-lg shadow-md">
-        {/* Header Section */}
-        <div className="flex justify-between items-center px-5 py-4 border-b border-gray-300">
-          <h2 className="text-lg font-semibold text-gray-900">
+      <div className="card card-shadow border border-gray-200">
+        
+        {/* Header */}
+        <div className="flex justify-between items-center px-5 py-4 border-b border-gray-200">
+          <h2 className="text-lg font-bold" style={{ color: "var(--color-black)" }}>
             All Employee Information
           </h2>
-          <button className="flex items-center bg-[#007BFF] text-white px-4 py-2 rounded-md hover:bg-blue-600 transition">
+
+          <button className="flex items-center font-bold bg-blue-500 text-white px-4 py-2 rounded-md hover:opacity-90 transition">
             <CirclePlus className="w-4 h-4 mr-2" /> Add Data
           </button>
         </div>
@@ -49,56 +52,53 @@ export default function EmployeePage() {
         <div className="overflow-x-auto">
           <table className="min-w-full border-collapse text-sm">
             <thead>
-              <tr className="bg-[#123E73] text-white text-center font-semibold">
-                <th className="p-3 border border-gray-300 w-12 text-center">No.</th>
-                <th className="p-3 border border-gray-300">Full Name</th>
-                <th className="p-3 border border-gray-300">NIK</th>
-                <th className="p-3 border border-gray-300">Gender</th>
-                <th className="p-3 border border-gray-300">Mobile Number</th>
-                <th className="p-3 border border-gray-300">Department</th>
-                <th className="p-3 border border-gray-300">Position</th>
-                <th className="p-3 border border-gray-300">Action</th>
+              <tr
+                className="text-white text-center font-bold"
+                style={{ background: "var(--color-primary)" }}
+              >
+                <th className="p-3 border w-12">No.</th>
+                <th className="p-3 border">Full Name</th>
+                <th className="p-3 border">NIK</th>
+                <th className="p-3 border">Gender</th>
+                <th className="p-3 border">Mobile Number</th>
+                <th className="p-3 border">Department</th>
+                <th className="p-3 border">Position</th>
+                <th className="p-3 border">Action</th>
               </tr>
             </thead>
+
             <tbody>
               {employeeList.map((emp, index) => (
                 <tr
                   key={emp.id}
-                  className={`border border-gray-300 ${
-                    index % 2 === 0 ? "bg-white" : "bg-gray-50"
-                  } hover:bg-gray-100 transition`}
+                  className="bg-white border border-gray-200 hover:bg-gray-100 transition"
                 >
-                  <td className="p-3 text-center border border-gray-300">
-                    {index + 1}
-                  </td>
-                  <td className="p-3 border border-gray-300">{emp.name}</td>
-                  <td className="p-3 border border-gray-300 text-center">
-                    {emp.nik}
-                  </td>
-                  <td className="p-3 border border-gray-300 text-center">
-                    {emp.gender}
-                  </td>
-                  <td className="p-3 border border-gray-300">{emp.phone}</td>
-                  <td className="p-3 border border-gray-300 text-center">
-                    {emp.dept}
-                  </td>
-                  <td className="p-3 border border-gray-300">{emp.position}</td>
-                  <td className="p-3 flex justify-center space-x-2 border border-gray-300">
+                  <td className="p-3 text-center border">{index + 1}</td>
+                  <td className="p-3 border">{emp.name}</td>
+                  <td className="p-3 border text-center">{emp.nik}</td>
+                  <td className="p-3 border text-center">{emp.gender}</td>
+                  <td className="p-3 border">{emp.phone}</td>
+                  <td className="p-3 border text-center">{emp.dept}</td>
+                  <td className="p-3 border">{emp.position}</td>
+
+                  <td className="p-3 flex justify-center space-x-2 border">
                     <button
                       onClick={() => setSelectedEmployee(emp)}
-                      className="bg-[#0DCAF0] p-2 rounded text-white hover:bg-sky-600 transition"
+                      className="p-2 rounded text-white bg-blue-500 hover:opacity-90"
                     >
                       <Eye className="w-4 h-4" />
                     </button>
+
                     <button
                       onClick={() => setEditEmployee(emp)}
-                      className="bg-[#198754] p-2 rounded text-white hover:bg-green-600 transition"
+                      className="p-2 rounded text-white bg-yellow-500 hover:opacity-90"
                     >
                       <Edit className="w-4 h-4" />
                     </button>
+
                     <button
                       onClick={() => setDeleteEmployee(emp)}
-                      className="bg-[#DC3545] p-2 rounded text-white hover:bg-red-600 transition"
+                      className="p-2 rounded text-white bg-red-700 hover:opacity-90"
                     >
                       <Trash className="w-4 h-4" />
                     </button>
@@ -106,37 +106,38 @@ export default function EmployeePage() {
                 </tr>
               ))}
             </tbody>
+
           </table>
         </div>
       </div>
 
-      {/* ---------------- VIEW MODAL ---------------- */}
+      {/* ================================================================= */}
+      {/*                           VIEW MODAL                               */} 
+      {/* ================================================================= */}
+
       {selectedEmployee && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg shadow-xl w-full max-w-md p-6 max-h-[90vh] overflow-y-auto relative">
-            <div className="relative mb-4 flex justify-center items-center">
-              <button
-                onClick={() => setSelectedEmployee(null)}
-                className="absolute left-0 text-gray-700 hover:text-gray-900"
-              >
+        <div className="fixed inset-0 modal-backdrop flex items-center justify-center z-50">
+          <div className="modal-content">
+
+            <div className="modal-header font-bold">
+              <button onClick={() => setSelectedEmployee(null)} className="modal-back-btn">
                 <CircleArrowLeft className="w-5 h-5" />
               </button>
-              <h2 className="text-lg font-semibold text-gray-900 text-center">
-                View Profile
-              </h2>
+              <h2 className="modal-title">View Profile</h2>
             </div>
 
-            <div className="flex justify-center mb-5">
+            <div className="modal-avatar">
               <Image
-                src="/avatar.png"
+                src="/profile.png"
                 alt="Profile Picture"
-                width={90}
-                height={90}
-                className="rounded-full border border-gray-300 object-cover"
+                width={50}
+                height={50}
+                className="avatar-img"
               />
             </div>
 
-            <div className="space-y-4">
+            <div className="modal-body space-y-3">
+
               {[
                 { label: "Full Name", value: selectedEmployee.name },
                 { label: "NIK", value: selectedEmployee.nik },
@@ -146,49 +147,43 @@ export default function EmployeePage() {
                 { label: "Position", value: selectedEmployee.position },
               ].map((item, idx) => (
                 <div key={idx}>
-                  <label className="block text-sm font-semibold text-gray-700 mb-1">
-                    {item.label}
-                  </label>
-                  <input
-                    type="text"
-                    value={item.value}
-                    readOnly
-                    className="w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-50 text-sm focus:outline-none"
-                  />
+                  <label className="input-label">{item.label}</label>
+                  <input type="text" value={item.value} readOnly className="input" />
                 </div>
               ))}
+
             </div>
           </div>
         </div>
       )}
 
-      {/* ---------------- EDIT MODAL ---------------- */}
+      {/* ================================================================= */}
+      {/*                           EDIT MODAL                              */} 
+      {/* ================================================================= */}
+
       {editEmployee && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg shadow-xl w-full max-w-md p-6 max-h-[90vh] overflow-y-auto relative">
-            <div className="relative mb-4 flex justify-center items-center">
-              <button
-                onClick={() => setEditEmployee(null)}
-                className="absolute left-0 text-gray-700 hover:text-gray-900"
-              >
+        <div className="fixed inset-0 modal-backdrop flex items-center justify-center z-50">
+          <div className="modal-content">
+
+            <div className="modal-header">
+              <button onClick={() => setEditEmployee(null)} className="modal-back-btn">
                 <CircleArrowLeft className="w-5 h-5" />
               </button>
-              <h2 className="text-lg font-semibold text-gray-900 text-center">
-                Edit Profile
-              </h2>
+              <h2 className="modal-title">Edit Profile</h2>
             </div>
 
-            <div className="flex justify-center mb-5">
+            <div className="modal-avatar">
               <Image
                 src="/avatar.png"
                 alt="Profile Picture"
                 width={90}
                 height={90}
-                className="rounded-full border border-gray-300 object-cover"
+                className="avatar-img"
               />
             </div>
 
-            <div className="space-y-4">
+            <div className="modal-body space-y-3">
+
               {[
                 { key: "name", label: "Full Name" },
                 { key: "nik", label: "NIK" },
@@ -198,56 +193,55 @@ export default function EmployeePage() {
                 { key: "position", label: "Position" },
               ].map((item, idx) => (
                 <div key={idx} className="relative">
-                  <label className="block text-sm font-semibold text-gray-700 mb-1">
-                    {item.label}
-                  </label>
-                  <div className="relative">
-                    <input
-                      type="text"
-                      value={editEmployee[item.key]}
-                      onChange={(e) =>
-                        setEditEmployee({
-                          ...editEmployee,
-                          [item.key]: e.target.value,
-                        })
-                      }
-                      className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none pr-8"
-                    />
-                    <Pencil className="w-4 h-4 text-gray-400 absolute right-3 top-3 pointer-events-none" />
-                  </div>
+                  <label className="input-label">{item.label}</label>
+
+                  <input
+                    type="text"
+                    value={editEmployee[item.key]}
+                    onChange={(e) =>
+                      setEditEmployee({ ...editEmployee, [item.key]: e.target.value })
+                    }
+                    className="input pr-10"
+                  />
+
+                  <Pencil className="input-icon" />
                 </div>
               ))}
+
             </div>
 
-            <div className="flex justify-end mt-6">
-              <button
-                onClick={handleSaveChanges}
-                className="px-5 py-2 bg-[#123E73] text-white rounded-md font-semibold hover:bg-blue-800"
-              >
+            <div className="modal-footer">
+              <button onClick={handleSaveChanges} className="btn-primary w-auto px-6">
                 Save Changes
               </button>
             </div>
+
           </div>
         </div>
       )}
 
-      {/* ---------------- DELETE CONFIRMATION MODAL ---------------- */}
+      {/* ================================================================= */}
+      {/*                           DELETE MODAL                            */} 
+      {/* ================================================================= */}
+
       {deleteEmployee && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg shadow-xl w-[350px] p-6 text-center">
-            <h3 className="text-lg font-semibold mb-6 text-gray-900">
-              Delete This Data?
-            </h3>
-            <div className="flex justify-center space-x-4">
+        <div className="fixed inset-0 modal-backdrop flex items-center justify-center z-50">
+          <div className="modal-delete">
+
+            <h3 className="modal-delete-title">Delete This Data?</h3>
+
+            <div className="modal-delete-actions">
+
               <button
                 onClick={() => setDeleteEmployee(null)}
-                className="px-5 py-2 border border-gray-300 rounded-md text-gray-700 font-semibold hover:bg-gray-100"
+                className="btn-cancel"
               >
                 Cancel
               </button>
+
               <button
                 onClick={handleDelete}
-                className="px-5 py-2 bg-[#DC3545] text-white rounded-md font-semibold hover:bg-red-700"
+                className="btn-danger"
               >
                 Delete
               </button>

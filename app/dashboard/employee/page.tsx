@@ -40,46 +40,51 @@ const workHoursData = [
 
 export default function EmployeeDashboard() {
   return (
-    <div className="flex flex-col flex-1 overflow-y-auto bg-gray-100">
+    <div className="dashboard-container">
       {/* Cards */}
-      <div className="p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+      <div className="dashboard-grid">
         <Card
           title="Work Hours"
           value="120h 20m"
           color="bg-blue-100"
-          icon={<Clock className="w-6 h-6 text-blue-600" />}
+          icon={<Clock className="w-6 h-6 text-[var(--color-primary)]" />}
         />
+
         <Card
           title="On Time"
           value="15"
           color="bg-purple-100"
-          icon={<CheckSquare className="w-6 h-6 text-purple-600" />}
+          icon={<CheckSquare className="w-6 h-6 text-purple-400" />}
         />
+
         <Card
           title="Late"
           value="5"
           color="bg-yellow-100"
-          icon={<ClipboardClock className="w-6 h-6 text-yellow-600" />}
+          icon={<ClipboardClock className="w-6 h-6 text-yellow-500" />}
         />
+
         <Card
           title="Leave/Sick"
           value="3"
           color="bg-green-100"
-          icon={<Mail className="w-6 h-6 text-green-600" />}
+          icon={<Mail className="w-6 h-6 text-green-700" />}
         />
+
         <Card
           title="Alpha"
           value="5"
           color="bg-red-100"
-          icon={<XCircle className="w-6 h-6 text-red-600" />}
+          icon={<XCircle className="w-6 h-6 text-red-700" />}
         />
       </div>
 
       {/* Charts */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 p-6">
+
         {/* Radar Chart */}
-        <div className="bg-white p-4 rounded-xl shadow">
-          <h3 className="text-lg font-semibold mb-4">Overview</h3>
+        <div className="table-box">
+          <h3 className="text-lg font-bold mb-4 text-black">Overview</h3>
           <ResponsiveContainer width="100%" height={300}>
             <RadarChart cx="50%" cy="50%" outerRadius="80%" data={overviewData}>
               <PolarGrid />
@@ -88,8 +93,8 @@ export default function EmployeeDashboard() {
               <Radar
                 name="Performance"
                 dataKey="A"
-                stroke="#2F6FB0"
-                fill="#2F6FB0"
+                stroke="var(--color-primary)"
+                fill="var(--color-primary)"
                 fillOpacity={0.6}
               />
             </RadarChart>
@@ -97,18 +102,19 @@ export default function EmployeeDashboard() {
         </div>
 
         {/* Bar Chart */}
-        <div className="bg-white p-4 rounded-xl shadow">
-          <h3 className="text-lg font-semibold mb-4">Work Hours</h3>
+        <div className="table-box">
+          <h3 className="text-lg font-bold mb-4 text-black">Work Hours</h3>
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={workHoursData}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="day" />
               <YAxis />
               <Tooltip />
-              <Bar dataKey="hours" fill="#2F6FB0" />
+              <Bar dataKey="hours" fill="var(--color-primary)" />
             </BarChart>
           </ResponsiveContainer>
         </div>
+
       </div>
     </div>
   );
