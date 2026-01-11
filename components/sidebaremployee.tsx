@@ -21,101 +21,94 @@ export default function Sidebar() {
       ? "text-white font-semibold active-link"
       : "text-[var(--color-primary)] font-semibold hover:bg-gray-100 hover:text-[var(--color-primary)]";
 
+  const activeStyle = (path: string) =>
+    pathname === path ? { background: "var(--gradient-blue)" } : {};
+
   return (
     <div
       className={`${
         isCollapsed ? "w-20" : "w-64"
-      } h-screen bg-white shadow transition-all duration-300 flex flex-col`}
+      } bg-white h-screen shadow-md flex flex-col justify-between transition-smooth`}
     >
       {/* Logo + Toggle */}
-      <div className="border-b border-gray-200 px-6 py-4 flex items-center justify-between">
-        <img src="/logo.png" alt="HRIS" className="h-8" />
+      <div>
+        <div className="flex items-center justify-between px-6 py-4 border-b">
+          <img src="/logo.png" alt="HRIS" className="h-8" />
 
-        <button
-          onClick={() => setIsCollapsed(!isCollapsed)}
-          className="p-1 rounded hover:bg-gray-100 transition-smooth"
-        >
-          <PanelLeft className="w-6 h-6 text-gray-600" />
-        </button>
+          <button
+            onClick={() => setIsCollapsed(!isCollapsed)}
+            className="p-1 rounded hover:bg-gray-100 transition-smooth"
+          >
+            <PanelLeft className="w-6 h-6 text-gray-600" />
+          </button>
+        </div>
+
+        {/* Menu */}
+        <nav className="flex flex-col px-4 py-2 space-y-1">
+          {/* Dashboard */}
+          <Link
+            href="/dashboard/employee"
+            className={`flex items-center p-2 rounded-lg transition-smooth ${isActive(
+              "/dashboard/employee"
+            )}`}
+            style={activeStyle("/dashboard/employee")}
+          >
+            <LayoutDashboard className="w-5 h-5" />
+            {!isCollapsed && <span className="ml-3">Dashboard</span>}
+          </Link>
+
+          {/* Attendance Section */}
+          {!isCollapsed && (
+            <p className="mt-4 mb-1 text-xs font-semibold text-gray-400">
+              Attendance
+            </p>
+          )}
+
+          <Link
+            href="/dashboard/employee/attendance"
+            className={`flex items-center p-2 rounded-lg transition-smooth ${isActive(
+              "/dashboard/employee/attendance"
+            )}`}
+            style={activeStyle("/dashboard/employee/attendance")}
+          >
+            <Clock className="w-5 h-5" />
+            {!isCollapsed && <span className="ml-3">Attendance</span>}
+          </Link>
+
+          <Link
+            href="/dashboard/employee/workschedule"
+            className={`flex items-center p-2 rounded-lg transition-smooth ${isActive(
+              "/dashboard/employee/workschedule"
+            )}`}
+            style={activeStyle("/dashboard/employee/workschedule")}
+          >
+            <CalendarDays className="w-5 h-5" />
+            {!isCollapsed && <span className="ml-3">Work Schedule</span>}
+          </Link>
+
+          <Link
+            href="/dashboard/employee/leaves"
+            className={`flex items-center p-2 rounded-lg transition-smooth ${isActive(
+              "/dashboard/employee/leaves"
+            )}`}
+            style={activeStyle("/dashboard/employee/leaves")}
+          >
+            <LogOut className="w-5 h-5" />
+            {!isCollapsed && <span className="ml-3">Leave Request</span>}
+          </Link>
+
+          <Link
+            href="/dashboard/employee/shift"
+            className={`flex items-center p-2 rounded-lg transition-smooth ${isActive(
+              "/dashboard/employee/shift"
+            )}`}
+            style={activeStyle("/dashboard/employee/shift")}
+          >
+            <UserCog className="w-5 h-5" />
+            {!isCollapsed && <span className="ml-3">Shift</span>}
+          </Link>
+        </nav>
       </div>
-
-      {/* Menu */}
-      <nav className="flex flex-col p-4 space-y-2">
-        <Link
-          href="/dashboard/employee"
-          className={`flex items-center p-2 rounded-lg transition-smooth ${isActive(
-            "/dashboard/employee"
-          )}`}
-          style={
-            pathname === "/dashboard/employee"
-              ? { background: "var(--gradient-blue)" }
-              : {}
-          }
-        >
-          <LayoutDashboard className="w-5 h-5" />
-          {!isCollapsed && <span className="ml-2">Dashboard</span>}
-        </Link>
-
-        <Link
-          href="/dashboard/employee/attendance"
-          className={`flex items-center p-2 rounded-lg transition-smooth ${isActive(
-            "/dashboard/employee/attendance"
-          )}`}
-          style={
-            pathname === "/dashboard/employee/attendance"
-              ? { background: "var(--gradient-blue)" }
-              : {}
-          }
-        >
-          <Clock className="w-5 h-5" />
-          {!isCollapsed && <span className="ml-2">Attendance</span>}
-        </Link>
-
-        <Link
-          href="/dashboard/employee/leaves"
-          className={`flex items-center p-2 rounded-lg transition-smooth ${isActive(
-            "/dashboard/employee/leaves"
-          )}`}
-          style={
-            pathname === "/dashboard/employee/leaves"
-              ? { background: "var(--gradient-blue)" }
-              : {}
-          }
-        >
-          <LogOut className="w-5 h-5" />
-          {!isCollapsed && <span className="ml-2">Leaves Request</span>}
-        </Link>
-
-        <Link
-          href="/dashboard/employee/shift"
-          className={`flex items-center p-2 rounded-lg transition-smooth ${isActive(
-            "/dashboard/employee/shift"
-          )}`}
-          style={
-            pathname === "/dashboard/employee/shift"
-              ? { background: "var(--gradient-blue)" }
-              : {}
-          }
-        >
-          <UserCog className="w-5 h-5" />
-          {!isCollapsed && <span className="ml-2">Shift</span>}
-        </Link>
-
-        <Link
-          href="/dashboard/employee/workschedule"
-          className={`flex items-center p-2 rounded-lg transition-smooth ${isActive(
-            "/dashboard/employee/workschedule"
-          )}`}
-          style={
-            pathname === "/dashboard/employee/workschedule"
-              ? { background: "var(--gradient-blue)" }
-              : {}
-          }
-        >
-          <CalendarDays className="w-5 h-5" />
-          {!isCollapsed && <span className="ml-2">Work Schedule</span>}
-        </Link>
-      </nav>
     </div>
   );
 }
