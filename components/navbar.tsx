@@ -28,8 +28,10 @@ export default function Navbar({ role }: NavbarProps) {
         setPageTitle("Employee");
       } else if (pathname.includes("/dashboard/admin/attendance")) {
         setPageTitle("Attendance");
-      } else if (pathname.includes("/dashboard/admin/leaves")) {
-        setPageTitle("Leaves");
+      } else if (pathname.includes("/dashboard/admin/leave-request")) {
+        setPageTitle("Leave Request");
+      } else if (pathname.includes("/dashboard/admin/leave-type")) {
+        setPageTitle("Leave Type");
       } else if (pathname.includes("/dashboard/admin/workschedule")) {
         setPageTitle("Work Schedule");
       } else if (pathname.includes("/dashboard/admin/transactions")) {
