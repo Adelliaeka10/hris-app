@@ -8,9 +8,16 @@ import {
   LayoutDashboard,
   CalendarDays,
   HandCoins,
-  LogOut,
   PanelLeft,
   UserCog,
+  FileText,
+  Layers,
+  CreditCard,
+  History,
+  LogOut,
+  NotebookText,
+  Gem,
+  Receipt,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -23,6 +30,9 @@ export default function Sidebar() {
       ? "text-white font-semibold active-link"
       : "text-[var(--color-primary)] font-semibold hover:bg-gray-100 hover:text-[var(--color-primary)]";
 
+  const activeStyle = (path: string) =>
+    pathname === path ? { background: "var(--gradient-blue)" } : {};
+
   return (
     <div
       className={`${
@@ -33,7 +43,6 @@ export default function Sidebar() {
       <div>
         <div className="flex items-center justify-between px-6 py-4 border-b">
           <img src="/logo.png" alt="HRIS" className="h-8" />
-
           <button
             onClick={() => setIsCollapsed(!isCollapsed)}
             className="p-1 rounded hover:bg-gray-100 transition-smooth"
@@ -43,65 +52,52 @@ export default function Sidebar() {
         </div>
 
         {/* Menu */}
-        <nav className="flex flex-col p-4 space-y-2">
+        <nav className="flex flex-col px-4 py-2 space-y-1">
+
+          {/* Dashboard */}
           <Link
             href="/dashboard/admin"
             className={`flex items-center p-2 rounded-lg transition-smooth ${isActive(
               "/dashboard/admin"
             )}`}
-            style={
-              pathname === "/dashboard/admin"
-                ? { background: "var(--gradient-blue)" }
-                : {}
-            }
+            style={activeStyle("/dashboard/admin")}
           >
             <LayoutDashboard className="w-5 h-5" />
             {!isCollapsed && <span className="ml-3">Dashboard</span>}
           </Link>
 
+          {/* Employment */}
+          {!isCollapsed && (
+            <p className="mt-4 mb-1 text-xs font-semibold text-gray-400">
+              Employment
+            </p>
+          )}
           <Link
             href="/dashboard/admin/employee"
             className={`flex items-center p-2 rounded-lg transition-smooth ${isActive(
               "/dashboard/admin/employee"
             )}`}
-            style={
-              pathname === "/dashboard/admin/employee"
-                ? { background: "var(--gradient-blue)" }
-                : {}
-            }
+            style={activeStyle("/dashboard/admin/employee")}
           >
             <Users className="w-5 h-5" />
             {!isCollapsed && <span className="ml-3">Employee</span>}
           </Link>
 
+          {/* Attendance */}
+          {!isCollapsed && (
+            <p className="mt-4 mb-1 text-xs font-semibold text-gray-400">
+              Attendance
+            </p>
+          )}
           <Link
             href="/dashboard/admin/attendance"
             className={`flex items-center p-2 rounded-lg transition-smooth ${isActive(
               "/dashboard/admin/attendance"
             )}`}
-            style={
-              pathname === "/dashboard/admin/attendance"
-                ? { background: "var(--gradient-blue)" }
-                : {}
-            }
+            style={activeStyle("/dashboard/admin/attendance")}
           >
             <Clock className="w-5 h-5" />
             {!isCollapsed && <span className="ml-3">Attendance</span>}
-          </Link>
-
-          <Link
-            href="/dashboard/admin/leaves"
-            className={`flex items-center p-2 rounded-lg transition-smooth ${isActive(
-              "/dashboard/admin/leaves"
-            )}`}
-            style={
-              pathname === "/dashboard/admin/leaves"
-                ? { background: "var(--gradient-blue)" }
-                : {}
-            }
-          >
-            <LogOut className="w-5 h-5" />
-            {!isCollapsed && <span className="ml-3">Leaves</span>}
           </Link>
 
           <Link
@@ -109,29 +105,32 @@ export default function Sidebar() {
             className={`flex items-center p-2 rounded-lg transition-smooth ${isActive(
               "/dashboard/admin/workschedule"
             )}`}
-            style={
-              pathname === "/dashboard/admin/workschedule"
-                ? { background: "var(--gradient-blue)" }
-                : {}
-            }
+            style={activeStyle("/dashboard/admin/workschedule")}
           >
             <CalendarDays className="w-5 h-5" />
             {!isCollapsed && <span className="ml-3">Work Schedule</span>}
           </Link>
 
           <Link
-            href="/dashboard/admin/transactions"
+            href="/dashboard/admin/leave-request"
             className={`flex items-center p-2 rounded-lg transition-smooth ${isActive(
-              "/dashboard/admin/transactions"
+              "/dashboard/admin/leave-request"
             )}`}
-            style={
-              pathname === "/dashboard/admin/transactions"
-                ? { background: "var(--gradient-blue)" }
-                : {}
-            }
+            style={activeStyle("/dashboard/admin/leave-request")}
           >
-            <HandCoins className="w-5 h-5" />
-            {!isCollapsed && <span className="ml-3">Transactions</span>}
+            <LogOut className="w-5 h-5" />
+            {!isCollapsed && <span className="ml-3">Leave Request</span>}
+          </Link>
+
+          <Link
+            href="/dashboard/admin/leave-type"
+            className={`flex items-center p-2 rounded-lg transition-smooth ${isActive(
+              "/dashboard/admin/leave-type"
+            )}`}
+            style={activeStyle("/dashboard/admin/leave-type")}
+          >
+            <NotebookText className="w-5 h-5" />
+            {!isCollapsed && <span className="ml-3">Leave Type</span>}
           </Link>
 
           <Link
@@ -139,49 +138,80 @@ export default function Sidebar() {
             className={`flex items-center p-2 rounded-lg transition-smooth ${isActive(
               "/dashboard/admin/shift"
             )}`}
-            style={
-              pathname === "/dashboard/admin/shift"
-                ? { background: "var(--gradient-blue)" }
-                : {}
-            }
+            style={activeStyle("/dashboard/admin/shift")}
           >
             <UserCog className="w-5 h-5" />
             {!isCollapsed && <span className="ml-3">Shift</span>}
           </Link>
+
+          {/* Transactions */}
+          {!isCollapsed && (
+            <p className="mt-4 mb-1 text-xs font-semibold text-gray-400">
+              Transactions
+            </p>
+          )}
+          <Link
+            href="/dashboard/admin/subscriptions"
+            className={`flex items-center p-2 rounded-lg transition-smooth ${isActive(
+              "/dashboard/admin/subscriptions"
+            )}`}
+            style={activeStyle("/dashboard/admin/subscriptions")}
+          >
+            <Gem className="w-5 h-5" />
+            {!isCollapsed && <span className="ml-3">Subscriptions</span>}
+          </Link>
+
+          <Link
+            href="/dashboard/admin/history"
+            className={`flex items-center p-2 rounded-lg transition-smooth ${isActive(
+              "/dashboard/admin/history"
+            )}`}
+            style={activeStyle("/dashboard/admin/history")}
+          >
+            <History className="w-5 h-5" />
+            {!isCollapsed && <span className="ml-3">History</span>}
+          </Link>
+
+          <Link
+            href="/dashboard/admin/billings"
+            className={`flex items-center p-2 rounded-lg transition-smooth ${isActive(
+              "/dashboard/admin/billings"
+            )}`}
+            style={activeStyle("/dashboard/admin/billings")}
+          >
+            <HandCoins className="w-5 h-5" />
+            {!isCollapsed && <span className="ml-3">Billings</span>}
+          </Link>
         </nav>
       </div>
 
-      {/* UPGRADE PLAN FIX */}
-      {!isCollapsed && (
-        <div className="p-4">
-          <div
-            className="
-              bg-blue-100
-              rounded-xl 
-              p-6 
-              shadow 
-              border
-              text-center 
-              transition-smooth
-            "
-            style={{ borderColor: "#1e3a5f" }}
-          >
-            <p className="mb-2 text-lg font-bold text-[var(--color-primary)]">
-              Upgrade Plan
-            </p>
-
-            <p className="mb-4 text-sm font-medium" style={{ color: "var(--color-primary)" }}>
-              choose the plan that best suits your business!
-            </p>
-
-            <button
-              className="px-4 py-2 rounded-md font-bold text-white shadow transition-smooth w-full"
-              style={{background: "linear-gradient(to right, #8E5800, #FFAA00)",}}>
-              get plans
-            </button>
-          </div>
+      {/* Upgrade Plan */}
+      <Link href="/plans/subscription">
+      <div className="flex justify-center w-full">
+        <button
+          className="
+            w-[85%]
+            flex
+            items-center
+            justify-center
+            gap-2
+            py-3
+            rounded-xl
+            font-bold
+            transition-smooth
+            border
+          "
+          style={{
+            background: "#DFEDFF",
+            borderColor: "#1e3a5f",
+            color: "var(--color-primary)",
+          }}
+        >
+          <Receipt className="w-5 h-5" />
+          Plans
+        </button>
         </div>
-      )}
+      </Link>
     </div>
   );
 }
